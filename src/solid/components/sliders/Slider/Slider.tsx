@@ -1,8 +1,8 @@
-import "keen-slider/keen-slider.min.css";
 import css from "./Slider.module.css";
 import { cls } from "@utils/cls";
 import KeenSlider, { type KeenSliderInstance } from "keen-slider";
 import { For, onCleanup, onMount } from "solid-js";
+// Están en layout -> import "keen-slider/keen-slider.min.css";
 
 export default function Slider(props: Props) {
   let slider_ref: HTMLDivElement | undefined;
