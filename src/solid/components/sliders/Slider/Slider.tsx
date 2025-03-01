@@ -22,16 +22,14 @@ export default function Slider(props: Props) {
   onCleanup(() => {
     slider?.destroy();
   });
+
   return (
     <div ref={(el) => (slider_ref = el!)} class={cls(["keen-slider", css.slider])}>
       <For each={props.data}>
         {(item) => (
-          <img
-            id={item.id}
-            class={cls(["keen-slider__slide", css.slide])}
-            src={item.img}
-            alt={item.title}
-          />
+          <a href={item.href} class={cls(["keen-slider__slide", css.slide])}>
+            <img id={item.id} src={item.img} alt={item.title} />
+          </a>
         )}
       </For>
 
@@ -49,4 +47,4 @@ type Props = {
   data: Data[];
 };
 
-type Data = { id: string; title: string; img: string };
+type Data = { id: string; title: string; img: string; href: string };

@@ -1,0 +1,11 @@
+---
+import Layout from "@layouts/Layout/Layout.astro";
+import AnimeIsland from "./AnimeIsland/AnimeIsland";
+import { ROUTER } from "@router/router";
+---
+
+<Layout title={ROUTER.anime.display}>
+  <main>
+    <AnimeIsland client:only="solid-js" />
+  </main>
+</Layout>

@@ -2,8 +2,11 @@
   height: var(--h_slider);
 
   .slide {
-    object-fit: cover;
     min-width: 250px;
+
+    img {
+      object-fit: cover;
+    }
   }
 
   .prev,
