@@ -3,6 +3,7 @@
 
   .slide {
     object-fit: cover;
+    min-width: 250px;
   }
 
   .prev,

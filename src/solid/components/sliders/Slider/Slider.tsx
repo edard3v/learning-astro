@@ -12,7 +12,7 @@ export default function Slider(props: Props) {
     if (slider_ref) {
       slider = new KeenSlider(slider_ref, {
         loop: true,
-        slides: { perView: 5 },
+        slides: { perView: "auto" },
         created: (_slider) => {}, // se ejecuta luego de estar montado el slider
         slideChanged: (_slider) => {}, // se ejecuta cada que cambia diapo
       });
