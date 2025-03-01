@@ -1,11 +1,12 @@
 ---
 import Link from "@components/links/Link/Link.astro";
+import Logo from "@components/logos/Logo/Logo.astro";
 import { ROUTER } from "@router/router";
 ---
 
 <header>
   <nav>
-    <Link href={ROUTER.home.href}>{ROUTER.home.display}</Link>
+    <Link href={ROUTER.home.href}><Logo /></Link>
     <Link href={ROUTER.contact.href}>{ROUTER.contact.display}</Link>
   </nav>
 </header>
