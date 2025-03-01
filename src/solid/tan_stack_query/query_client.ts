@@ -22,3 +22,8 @@ persistQueryClient({
   persister: storagePersister,
   maxAge: 1000 * 60 * 60 * 24, // 24h
 });
+
+// recuerda ejecutar esto en tu layout si usas localStorage
+// <script>
+//   import "@solid/tan_stack_query/clear_query_client_if_refresh.ts";
+// </script>

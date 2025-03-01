@@ -8,7 +8,7 @@ export const get_anime_by_id_full_fetch = async (
 
   if (!id) return;
 
-  const res = await fetch(JikanUrls.anime_by_id_full(id), {
+  const res = await fetch(JikanUrls.anime_by_id_full(Number(id)), {
     signal,
     method: "GET",
     headers: {
@@ -25,5 +25,5 @@ export const get_anime_by_id_full_fetch = async (
 
 type GetAnimeByIdFullFetchParams = {
   signal: AbortSignal;
-  id?: number | null;
+  id?: string | null;
 };
