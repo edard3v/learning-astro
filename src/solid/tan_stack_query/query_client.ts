@@ -20,5 +20,5 @@ const storagePersister = createSyncStoragePersister({
 persistQueryClient({
   queryClient: query_client,
   persister: storagePersister,
-  maxAge: 60 * 60 * 1000, // 1h
+  maxAge: 1000 * 60 * 60 * 24, // 24h
 });
