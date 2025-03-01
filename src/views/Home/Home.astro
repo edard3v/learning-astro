@@ -1,13 +1,11 @@
 ---
 import Layout from "@layouts/Layout/Layout.astro";
 import { ROUTER } from "@router/router";
-import Btn from "@solid/components/buttons/Btn/Btn";
-import SolidIsland from "./SolidIsland/SolidIsland";
+import TopAnimeIsland from "./TopAnimeIsland/TopAnimeIsland";
 ---
 
 <Layout title={ROUTER.home.display}>
   <main>
-    <h1>¡Hola mundo!</h1>
-    <SolidIsland client:load />
+    <TopAnimeIsland client:load />
   </main>
 </Layout>

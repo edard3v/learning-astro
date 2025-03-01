@@ -9,9 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/solid-js": "5.0.5",
     "@fontsource-variable/work-sans": "5.1.1",
     "astro": "5.4.1",
-    "@astrojs/solid-js": "5.0.5",
+    "keen-slider": "6.8.6",
     "solid-js": "1.9.5"
   }
 }

@@ -1,0 +1,21 @@
+.slider {
+  padding: 0 var(--xl);
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: inherit;
+    background-color: transparent;
+    line-height: 1rem;
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+}
