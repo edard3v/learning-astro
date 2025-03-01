@@ -13,7 +13,7 @@ export default function TopAnime() {
   return (
     <div class={cls([css.top_anime])}>
       <Switch>
-        <Match when={query.isPending}>
+        <Match when={query.isLoading}>
           <p>Loading...</p>
         </Match>
 
