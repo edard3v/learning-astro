@@ -1,14 +1,13 @@
 import css from "./Slider.module.css";
 import { cls } from "@utils/cls";
 import KeenSlider, { type KeenSliderInstance } from "keen-slider";
-import { For, onCleanup, onMount } from "solid-js";
-// Están en layout -> import "keen-slider/keen-slider.min.css";
+import { For, createEffect, onCleanup } from "solid-js";
 
 export default function Slider(props: Props) {
   let slider_ref: HTMLDivElement | undefined;
   let slider: KeenSliderInstance | undefined;
 
-  onMount(() => {
+  const init_slider = () => {
     if (slider_ref) {
       slider = new KeenSlider(slider_ref, {
         loop: true,
@@ -17,6 +16,16 @@ export default function Slider(props: Props) {
         slideChanged: (_slider) => {}, // se ejecuta cada que cambia diapo
       });
     }
+  };
+
+  // onMount(() => {
+  //   initSlider();
+  // });
+
+  // 🚀 Re-inicializar el slider cada vez que props.data cambie
+  createEffect(() => {
+    props.data;
+    init_slider();
   });
 
   onCleanup(() => {
