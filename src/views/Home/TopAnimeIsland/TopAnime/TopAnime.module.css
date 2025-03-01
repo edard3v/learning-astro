@@ -1,19 +1,4 @@
-.top_anime_slider {
+.top_anime {
   position: relative;
-  height: 350px;
-}
-.card {
-  width: 100%;
-  height: 100%;
-
-  picture {
-    width: 100%;
-    height: 100%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+  min-height: var(--h_slider);
 }

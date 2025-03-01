@@ -2,7 +2,9 @@ import { createQuery } from "@tanstack/solid-query";
 import css from "./TopAnime.module.css";
 import { cls } from "@utils/cls";
 import { get_top_anime_fetch } from "./get_top_anime_fetch/get_top_anime_fetch";
-import { For, Match, Switch } from "solid-js";
+import Slider from "@solid/components/sliders/Slider/Slider";
+import Loading from "@solid/components/loaders/Loading/Loading";
+import ErrorComp from "@solid/components/errors/ErrorComp/ErrorComp";
 
 export default function TopAnime() {
   const query = createQuery(() => ({
@@ -10,21 +12,18 @@ export default function TopAnime() {
     queryFn: get_top_anime_fetch,
   }));
 
+  const data = () =>
+    query.data?.data.map((item) => ({
+      id: String(item.mal_id),
+      title: item.title,
+      img: item.images.webp.large_image_url,
+    }));
+
   return (
     <div class={cls([css.top_anime])}>
-      <Switch>
-        <Match when={query.isLoading}>
-          <p>Loading...</p>
-        </Match>
-
-        <Match when={query.isError}>
-          <p>Error</p>
-        </Match>
-
-        <Match when={query.isSuccess}>
-          <For each={query.data?.data}>{(item) => <p>{item.title}</p>}</For>
-        </Match>
-      </Switch>
+      {query.isError && <ErrorComp />}
+      {query.isLoading && <Loading />}
+      {query.isSuccess && <Slider data={data()!} />}
     </div>
   );
 }

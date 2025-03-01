@@ -2,9 +2,9 @@ import "keen-slider/keen-slider.min.css";
 import css from "./Slider.module.css";
 import { cls } from "@utils/cls";
 import KeenSlider, { type KeenSliderInstance } from "keen-slider";
-import { onCleanup, onMount } from "solid-js";
+import { For, onCleanup, onMount } from "solid-js";
 
-export default function Slider() {
+export default function Slider(props: Props) {
   let slider_ref: HTMLDivElement | undefined;
   let slider: KeenSliderInstance | undefined;
 
@@ -12,7 +12,7 @@ export default function Slider() {
     if (slider_ref) {
       slider = new KeenSlider(slider_ref, {
         loop: true,
-        slides: { perView: 1 },
+        slides: { perView: 5 },
         created: (_slider) => {}, // se ejecuta luego de estar montado el slider
         slideChanged: (_slider) => {}, // se ejecuta cada que cambia diapo
       });
@@ -24,9 +24,16 @@ export default function Slider() {
   });
   return (
     <div ref={(el) => (slider_ref = el!)} class={cls(["keen-slider", css.slider])}>
-      <div class="keen-slider__slide">Slide 1</div>
-      <div class="keen-slider__slide">Slide 2</div>
-      <div class="keen-slider__slide">Slide 3</div>
+      <For each={props.data}>
+        {(item) => (
+          <img
+            id={item.id}
+            class={cls(["keen-slider__slide", css.slide])}
+            src={item.img}
+            alt={item.title}
+          />
+        )}
+      </For>
 
       <button class={css.prev} onclick={() => slider?.prev()}>
         🠘
@@ -37,3 +44,9 @@ export default function Slider() {
     </div>
   );
 }
+
+type Props = {
+  data: Data[];
+};
+
+type Data = { id: string; title: string; img: string };

@@ -1,14 +1,19 @@
 .slider {
-  padding: 0 var(--xl);
+  height: var(--h_slider);
+
+  .slide {
+    object-fit: cover;
+  }
 
   .prev,
   .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: inherit;
+    color: var(--bg_surf);
     background-color: transparent;
     line-height: 1rem;
+    font-size: 2rem;
   }
 
   .prev {
