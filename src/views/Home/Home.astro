@@ -2,10 +2,15 @@
 import Layout from "@layouts/Layout/Layout.astro";
 import { ROUTER } from "@router/router";
 import TopAnimeIsland from "./TopAnimeIsland/TopAnimeIsland";
+import { counter } from "@stores/counter";
+import Btn from "@components/buttons/Btn/Btn.astro";
 ---
 
 <Layout title={ROUTER.home.display}>
   <main class="home">
+    <Btn id={"home_add"}>Sumar</Btn>
+    <span style="padding: 1rem;" id="home_counter">{counter.get()}</span>
+    <Btn id={"home_clean"}>Limpiar</Btn>
     <h1>Top animes</h1>
     <div class="top_anime_island">
       <TopAnimeIsland client:only="solid-js" />
@@ -20,3 +25,26 @@ import TopAnimeIsland from "./TopAnimeIsland/TopAnimeIsland";
     }
   }
 </style>
+
+<script>
+  import { counter } from "@stores/counter";
+  import { Dom } from "@utils/dom/dom";
+
+  document.addEventListener("astro:page-load", () => {
+    const home_counter = Dom.select("home_counter");
+    counter.subscribe((counter) => {
+      if (!home_counter) return;
+      home_counter.textContent = String(counter);
+    });
+
+    const add = Dom.select("home_add");
+    add?.addEventListener("click", () => {
+      counter.set(counter.get() + 1);
+    });
+
+    const clean = Dom.select("home_clean");
+    clean?.addEventListener("click", () => {
+      counter.set(0);
+    });
+  });
+</script>

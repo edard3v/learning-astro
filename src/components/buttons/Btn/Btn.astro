@@ -28,5 +28,9 @@ const { class: cls, ...rest } = Astro.props;
       color: var(--grey);
       cursor: not-allowed;
     }
+
+    &:not(:disabled):active {
+      transform: scale(0.95);
+    }
   }
 </style>

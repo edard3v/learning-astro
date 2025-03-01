@@ -6,5 +6,20 @@ import { ROUTER } from "@router/router";
 <Layout title={ROUTER.contact.display}>
   <main>
     <h1>Contáctanos</h1>
+    <div id="contact_counter"></div>
   </main>
 </Layout>
+
+<script>
+  import { counter } from "@stores/counter";
+  import { Dom } from "@utils/dom/dom";
+
+  document.addEventListener("astro:page-load", () => {
+    counter.subscribe((counter) => {
+      const contact_counter = Dom.select("contact_counter");
+      if (!contact_counter) return;
+
+      contact_counter.textContent = String(counter);
+    });
+  });
+</script>
