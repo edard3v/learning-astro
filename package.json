@@ -13,6 +13,8 @@
     "@fontsource-variable/work-sans": "5.1.1",
     "@tanstack/solid-query": "5.66.11",
     "@tanstack/solid-query-devtools": "5.66.11",
+    "@tanstack/query-sync-storage-persister": "5.66.11",
+    "@tanstack/solid-query-persist-client": "5.66.11",
     "astro": "5.4.1",
     "keen-slider": "6.8.6",
     "solid-js": "1.9.5"
