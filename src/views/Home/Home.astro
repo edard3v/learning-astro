@@ -5,8 +5,10 @@ import TopAnimeIsland from "./TopAnimeIsland/TopAnimeIsland";
 import { counter } from "@stores/counter";
 import Btn from "@components/buttons/Btn/Btn.astro";
 import { get_top_anime_fetch } from "./TopAnimeIsland/TopAnime/get_top_anime_fetch/get_top_anime_fetch";
+import { init_top_anime } from "@stores/init_top_anime";
 
 const top_anime = await get_top_anime_fetch({ signal: new AbortController().signal });
+init_top_anime.set(top_anime);
 ---
 
 <Layout title={ROUTER.home.display}>
@@ -14,7 +16,9 @@ const top_anime = await get_top_anime_fetch({ signal: new AbortController().sign
     <Btn id={"home_add"}>Sumar</Btn>
     <span style="padding: 1rem;" id="home_counter">{counter.get()}</span>
     <Btn id={"home_clean"}>Limpiar</Btn>
-    <TopAnimeIsland client:load top_anime={top_anime} />
+
+    <TopAnimeIsland client:load />
+
     <h1>Top animes</h1>
   </main>
 </Layout>

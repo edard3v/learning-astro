@@ -4,14 +4,16 @@ import { cls } from "@utils/cls";
 import { get_top_anime_fetch } from "./get_top_anime_fetch/get_top_anime_fetch";
 import Slider from "@solid/components/sliders/Slider/Slider";
 import { ROUTER } from "@router/router";
-import type { GetTopAnimeFetchRes } from "./get_top_anime_fetch/types";
 import ErrorComp from "@solid/components/errors/ErrorComp/ErrorComp";
+import { useStore } from "@nanostores/solid";
+import { init_top_anime } from "@stores/init_top_anime";
 
-export default function TopAnime(props: Props) {
+export default function TopAnime() {
+  const $init_top_anime = useStore(init_top_anime);
   const query = createQuery(() => ({
     queryKey: ["top_anime"],
     queryFn: get_top_anime_fetch,
-    initialData: props.top_anime,
+    initialData: $init_top_anime(),
   }));
 
   const data = () =>
@@ -27,9 +29,7 @@ export default function TopAnime(props: Props) {
       {query.isError && <ErrorComp />}
       {/* {query.isLoading && <Loading />}
       {query.isSuccess && <Slider data={data()!} />} */}
-      <Slider data={data()} />
+      <Slider data={data()!} />
     </div>
   );
 }
-
-type Props = { top_anime: GetTopAnimeFetchRes };
