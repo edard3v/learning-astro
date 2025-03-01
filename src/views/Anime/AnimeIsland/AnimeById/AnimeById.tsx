@@ -1,3 +1,4 @@
+import css from "./AnimeById.module.css";
 import { createQuery } from "@tanstack/solid-query";
 import { get_anime_id } from "./get_anime_id";
 import { get_anime_by_id_full_fetch } from "./get_anime_by_id_full_fetch/get_anime_by_id_full_fetch";
@@ -12,7 +13,7 @@ export default function AnimeById() {
   }));
 
   return (
-    <div>
+    <div class={css.anime_by_id}>
       {query.isError && <ErrorComp />}
       {query.isLoading && <Loading />}
       {query.isSuccess && <div>{query.data?.data.title}</div>}

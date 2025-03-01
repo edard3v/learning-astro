@@ -5,7 +5,18 @@ import TopAnimeIsland from "./TopAnimeIsland/TopAnimeIsland";
 ---
 
 <Layout title={ROUTER.home.display}>
-  <main>
-    <TopAnimeIsland client:only="solid-js" />
+  <main class="home">
+    <h1>Top animes</h1>
+    <div class="top_anime_island">
+      <TopAnimeIsland client:only="solid-js" />
+    </div>
   </main>
 </Layout>
+
+<style>
+  .home {
+    .top_anime_island {
+      min-height: var(--h_slider);
+    }
+  }
+</style>
