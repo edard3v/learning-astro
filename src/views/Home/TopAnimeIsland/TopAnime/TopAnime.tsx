@@ -6,11 +6,13 @@ import Slider from "@solid/components/sliders/Slider/Slider";
 import Loading from "@solid/components/loaders/Loading/Loading";
 import ErrorComp from "@solid/components/errors/ErrorComp/ErrorComp";
 import { ROUTER } from "@router/router";
+import type { GetTopAnimeFetchRes } from "./get_top_anime_fetch/types";
 
-export default function TopAnime() {
+export default function TopAnime(props: Props) {
   const query = createQuery(() => ({
     queryKey: ["top_anime"],
     queryFn: get_top_anime_fetch,
+    initialData: props.top_anime,
   }));
 
   const data = () =>
@@ -29,3 +31,5 @@ export default function TopAnime() {
     </div>
   );
 }
+
+type Props = { top_anime: GetTopAnimeFetchRes };

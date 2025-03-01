@@ -4,6 +4,9 @@ import { ROUTER } from "@router/router";
 import TopAnimeIsland from "./TopAnimeIsland/TopAnimeIsland";
 import { counter } from "@stores/counter";
 import Btn from "@components/buttons/Btn/Btn.astro";
+import { get_top_anime_fetch } from "./TopAnimeIsland/TopAnime/get_top_anime_fetch/get_top_anime_fetch";
+
+const top_anime = await get_top_anime_fetch({ signal: new AbortController().signal });
 ---
 
 <Layout title={ROUTER.home.display}>
@@ -13,7 +16,7 @@ import Btn from "@components/buttons/Btn/Btn.astro";
     <Btn id={"home_clean"}>Limpiar</Btn>
     <h1>Top animes</h1>
     <div class="top_anime_island">
-      <TopAnimeIsland client:only="solid-js" />
+      <TopAnimeIsland client:only="solid-js" top_anime={top_anime} />
     </div>
   </main>
 </Layout>
