@@ -3,10 +3,9 @@ import css from "./TopAnime.module.css";
 import { cls } from "@utils/cls";
 import { get_top_anime_fetch } from "./get_top_anime_fetch/get_top_anime_fetch";
 import Slider from "@solid/components/sliders/Slider/Slider";
-import Loading from "@solid/components/loaders/Loading/Loading";
-import ErrorComp from "@solid/components/errors/ErrorComp/ErrorComp";
 import { ROUTER } from "@router/router";
 import type { GetTopAnimeFetchRes } from "./get_top_anime_fetch/types";
+import ErrorComp from "@solid/components/errors/ErrorComp/ErrorComp";
 
 export default function TopAnime(props: Props) {
   const query = createQuery(() => ({
@@ -26,8 +25,9 @@ export default function TopAnime(props: Props) {
   return (
     <div class={cls([css.top_anime])}>
       {query.isError && <ErrorComp />}
-      {query.isLoading && <Loading />}
-      {query.isSuccess && <Slider data={data()!} />}
+      {/* {query.isLoading && <Loading />}
+      {query.isSuccess && <Slider data={data()!} />} */}
+      <Slider data={data()} />
     </div>
   );
 }

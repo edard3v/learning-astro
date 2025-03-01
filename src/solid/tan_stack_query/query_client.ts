@@ -9,19 +9,22 @@ export const query_client = new QueryClient({
       refetchOnWindowFocus: false,
       staleTime: 1000 * 60 * 60 * 24, // 24h
       retry: 1,
+      experimental_prefetchInRender: true,
     },
   },
 });
 
-const storagePersister = createSyncStoragePersister({
-  storage: sessionStorage,
-});
+if (typeof window !== "undefined") {
+  const storagePersister = createSyncStoragePersister({
+    storage: sessionStorage,
+  });
 
-persistQueryClient({
-  queryClient: query_client,
-  persister: storagePersister,
-  maxAge: 1000 * 60 * 60 * 24, // 24h
-});
+  persistQueryClient({
+    queryClient: query_client,
+    persister: storagePersister,
+    maxAge: 1000 * 60 * 60 * 24, // 24h
+  });
+}
 
 // recuerda ejecutar esto en tu layout si usas localStorage
 // <script>

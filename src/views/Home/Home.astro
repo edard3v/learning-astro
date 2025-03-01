@@ -14,10 +14,8 @@ const top_anime = await get_top_anime_fetch({ signal: new AbortController().sign
     <Btn id={"home_add"}>Sumar</Btn>
     <span style="padding: 1rem;" id="home_counter">{counter.get()}</span>
     <Btn id={"home_clean"}>Limpiar</Btn>
+    <TopAnimeIsland client:load top_anime={top_anime} />
     <h1>Top animes</h1>
-    <div class="top_anime_island">
-      <TopAnimeIsland client:only="solid-js" top_anime={top_anime} />
-    </div>
   </main>
 </Layout>
 
